@@ -171,13 +171,15 @@ function getAverageNormalized(array, normalizeFactor) {
 function isEyeLookingAtScreen(posX, posY, gazeX, gazeY, distanceFromWebCam){
     var c1 = Math.sqrt(Math.pow(posX,2)+Math.pow(distanceFromWebCam,2));
     var c2 = (width - posX);
-    var maximumIpotenusa = Math.sqrt(Math.pow(c2, 2)+Math.pow(c1,2));
-    var maximumAngle = Math.asin(c2/maximumIpotenusa)*2*Math.PI;
+    var maximumIpotenusaX = Math.sqrt(Math.pow(c2, 2)+Math.pow(c1,2));
+    var maximumAngleX = Math.asin(c2/maximumIpotenusaX)*12*Math.PI;
 
-    console.log(maximumAngle);
+    
+    c2 = (height - posY);
+    var maximumIpotenusaY = Math.sqrt(Math.pow(c2, 2)+Math.pow(c1,2));
+    var maximumAngleY = Math.asin(c2/maximumIpotenusaY)*12*Math.PI;
 
-
-    return true;
+    return gazeX < maximumAngleX && gazeY < maximumAngleY;
 }
 
 
